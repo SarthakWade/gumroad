@@ -8,7 +8,7 @@
       <% if active %>
         <span role="tab" aria-selected="true"><%= title %></span>
       <% else %>
-        <%= link_to(title, route_path, role: "tab") %>
+        <%= link_to(title, route_path, role: "tab", class: "no-underline") %>
       <% end %>
     <% end %>
   </div>

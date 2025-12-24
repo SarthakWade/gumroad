@@ -1,5 +1,5 @@
 <div role="navigation" aria-label="API Reference" class="lg:sticky lg:top-8 lg:max-h-[calc(100vh-4rem)] lg:h-full lg:overflow-auto">
-  <menu>
+  <menu class="grid gap-3">
     <li>
       <%= link_to("Introduction", api_path(anchor: "api-intro")) %>
     </li>
@@ -14,7 +14,7 @@
     </li>
     <li>
       <%= link_to("Methods", api_path(anchor: "api-methods")) %>
-      <menu>
+      <menu class="grid gap-3 pl-4 mt-3 text-sm leading-tight">
         <% GUMROAD_API_V2_METHODS.each do |method| %>
           <li>
             <%= link_to(method[:name], api_path(anchor: method[:name].gsub(" ", "-").downcase)) %>

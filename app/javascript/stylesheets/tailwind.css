@@ -116,3 +116,96 @@
     transform: translateX(-50%);
   }
 }
+
+/* JWPlayer - third-party library injects these elements */
+.jwplayer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.jwplayer .jw-time-tip {
+  min-width: max-content;
+}
+
+/* Chromium draggable bug workaround - vendor prefix */
+button[draggable="true"] {
+  -webkit-user-drag: element;
+}
+
+/* Firefox selection fix - pseudo-element */
+.rich-text .selected *::selection {
+  background: none;
+}
+
+/* Overlay page for embeds */
+body#overlay-page {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+body#overlay-page:not(.gumroad-minimized) {
+  background: rgb(0 0 0 / 0.5);
+}
+
+body#overlay-page .product-display {
+  overflow: auto;
+}
+
+/* Rich text embed preview */
+.rich-text .embed > .preview {
+  padding: calc(56.25% + 1rem) 0 0 0;
+}
+
+.rich-text .embed > .preview > :first-child.placeholder {
+  position: absolute;
+  width: calc(100% - 2rem);
+}
+
+/* Form section styling */
+form > main section {
+  display: grid;
+  padding: 3rem 0;
+  border-top: solid 0.0625rem rgb(var(--color) / var(--border-alpha));
+  gap: 2rem;
+}
+
+form > main section > header {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+form > main section:not(form + form section):first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Product card - Firefox/Safari fixes */
+article.product-card .thumbnails > * {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  article.product-card.horizontal {
+    display: flex;
+  }
+
+  article.product-card.horizontal > figure {
+    height: 100%;
+  }
+
+  article.product-card.horizontal > figure img {
+    width: unset;
+    min-width: 100%;
+  }
+
+  article.product-card.horizontal .thumbnails {
+    flex: 1;
+  }
+
+  article.product-card.horizontal section {
+    flex: 2;
+  }
+}
