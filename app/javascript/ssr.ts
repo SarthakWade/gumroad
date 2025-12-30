@@ -44,7 +44,6 @@ import GenerateInvoicePage from "$app/components/server-components/GenerateInvoi
 import GumroadBlogIndexPage from "$app/components/server-components/GumroadBlog/IndexPage";
 import GumroadBlogPostPage from "$app/components/server-components/GumroadBlog/PostPage";
 import HelpCenterArticlesIndexPage from "$app/components/server-components/HelpCenter/ArticlesIndexPage";
-import LoginPage from "$app/components/server-components/LoginPage";
 import Nav from "$app/components/server-components/Nav";
 import PasswordResetPage from "$app/components/server-components/PasswordResetPage";
 import PdfReaderPage from "$app/components/server-components/PdfReaderPage";
@@ -63,7 +62,6 @@ import PurchaseProductPage from "$app/components/server-components/Purchase/Prod
 import SubscribeReviewReminders from "$app/components/server-components/ReviewReminders/SubscribeReviewReminders";
 import UnsubscribeReviewReminders from "$app/components/server-components/ReviewReminders/UnsubscribeReviewReminders";
 import SecureRedirectPage from "$app/components/server-components/SecureRedirectPage";
-import SignupPage from "$app/components/server-components/SignupPage";
 import SubscribePage from "$app/components/server-components/SubscribePage";
 import SubscribePreview from "$app/components/server-components/SubscribePreview";
 import SubscriptionManager from "$app/components/server-components/SubscriptionManager";
@@ -122,7 +120,6 @@ ReactOnRails.register({
   GenerateInvoicePage,
   GumroadBlogIndexPage,
   GumroadBlogPostPage,
-  LoginPage,
   Nav,
   PasswordResetPage,
   PdfReaderPage,
@@ -139,7 +136,6 @@ ReactOnRails.register({
   PublicChargePage,
   PublicLicenseKeyPage,
   SecureRedirectPage,
-  SignupPage,
   SubscribePage,
   SubscribePreview,
   SubscribeReviewReminders,
