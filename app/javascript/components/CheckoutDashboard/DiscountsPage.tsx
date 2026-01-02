@@ -23,6 +23,7 @@ import { CopyToClipboard } from "$app/components/CopyToClipboard";
 import { useCurrentSeller } from "$app/components/CurrentSeller";
 import { DateInput } from "$app/components/DateInput";
 import { Details } from "$app/components/Details";
+import { Dropdown } from "$app/components/ui/Dropdown";
 import { Icon } from "$app/components/Icons";
 import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { NumberInput } from "$app/components/NumberInput";
@@ -1041,7 +1042,7 @@ const Form = ({
                 </label>
               }
             >
-              <div className="dropdown">
+              <Dropdown>
                 <fieldset className={cx({ danger: maxQuantity.error })}>
                   <legend>
                     <label htmlFor={`${uid}quantity`}>Quantity</label>
@@ -1057,7 +1058,7 @@ const Form = ({
                     )}
                   </NumberInput>
                 </fieldset>
-              </div>
+              </Dropdown>
             </Details>
             <Details
               className="toggle"
@@ -1074,8 +1075,7 @@ const Form = ({
                 </label>
               }
             >
-              <div
-                className="dropdown"
+              <Dropdown
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(var(--dynamic-grid), 1fr))",
@@ -1118,7 +1118,7 @@ const Form = ({
                     aria-invalid={expiresAt.error ?? false}
                   />
                 </fieldset>
-              </div>
+              </Dropdown>
             </Details>
             <Details
               className="toggle"
@@ -1135,7 +1135,7 @@ const Form = ({
                 </label>
               }
             >
-              <div className="dropdown">
+              <Dropdown>
                 <fieldset className={cx({ danger: minimumAmount.error })}>
                   <legend>
                     <label htmlFor={`${uid}minimumAmount`}>Minimum amount</label>
@@ -1149,7 +1149,7 @@ const Form = ({
                     hasError={minimumAmount.error ?? false}
                   />
                 </fieldset>
-              </div>
+              </Dropdown>
             </Details>
             <Details
               className="toggle"
@@ -1166,7 +1166,7 @@ const Form = ({
                 </label>
               }
             >
-              <div className="dropdown">
+              <Dropdown>
                 <fieldset className={cx({ danger: minimumQuantity.error })}>
                   <legend>
                     <label htmlFor={`${uid}minimumQuantity`}>Minimum quantity per product</label>
@@ -1187,7 +1187,7 @@ const Form = ({
                     )}
                   </NumberInput>
                 </fieldset>
-              </div>
+              </Dropdown>
             </Details>
           </fieldset>
         </section>

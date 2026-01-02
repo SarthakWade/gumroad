@@ -26,6 +26,7 @@ import { CheckoutPreview } from "$app/components/CheckoutDashboard/CheckoutPrevi
 import { DiscountInput, InputtedDiscount } from "$app/components/CheckoutDashboard/DiscountInput";
 import { Layout, Page } from "$app/components/CheckoutDashboard/Layout";
 import { Details } from "$app/components/Details";
+import { Dropdown } from "$app/components/ui/Dropdown";
 import { Icon } from "$app/components/Icons";
 import { useLoggedInUser } from "$app/components/LoggedInUser";
 import { Modal } from "$app/components/Modal";
@@ -860,9 +861,9 @@ const Form = ({
                     }
                   >
                     {discount ? (
-                      <div className="dropdown">
+                      <Dropdown>
                         <DiscountInput discount={discount} setDiscount={setDiscount} currencyCode="usd" />
-                      </div>
+                      </Dropdown>
                     ) : null}
                   </Details>
                 </fieldset>

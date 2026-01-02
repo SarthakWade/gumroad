@@ -273,13 +273,17 @@ const MenubarItem = ({
   return (
     <div
       ref={hasChildren ? ref : undefined}
-      className={hasChildren ? classNames("popover", { expanded: menuOpen }) : undefined}
+      className={hasChildren ? classNames("relative inline-block", { expanded: menuOpen }) : undefined}
       onMouseEnter={() => handleToggleMenu(true)}
       onMouseLeave={hasChildren ? closeAfterDelay : () => handleToggleMenu(false)}
     >
       {menuItemAnchor}
       {hasChildren ? (
-        <div className="dropdown" hidden={!menuOpen} style={dropdownPosition}>
+        <div
+          className="absolute top-full left-0 z-30 w-max min-w-full rounded border border-border bg-background p-4 text-foreground shadow"
+          hidden={!menuOpen}
+          style={dropdownPosition}
+        >
           <ItemsList
             menuId={uid}
             menuItem={menuItem}

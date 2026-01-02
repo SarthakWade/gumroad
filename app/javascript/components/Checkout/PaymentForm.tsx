@@ -14,6 +14,8 @@ import * as BraintreePaypal from "braintree-web/paypal";
 import cx from "classnames";
 import * as React from "react";
 
+import { classNames } from "$app/utils/classNames";
+
 import { useBraintreeToken } from "$app/data/braintree_client_token_data";
 import { preparePaymentRequestPaymentMethodData } from "$app/data/card_payment_method_data";
 import {
@@ -34,6 +36,7 @@ import { asyncVoid } from "$app/utils/promise";
 import { Button } from "$app/components/Button";
 import { CreditCardInput, StripeElementsProvider } from "$app/components/Checkout/CreditCardInput";
 import { CustomFields } from "$app/components/Checkout/CustomFields";
+import { Dropdown } from "$app/components/ui/Dropdown";
 import {
   addressFields,
   getErrors,
@@ -224,7 +227,7 @@ const EmailAddress = () => {
               <h4>Email address</h4>
             </label>
           </legend>
-          <div className={cx("popover", { expanded: !!state.emailTypoSuggestion })} style={{ width: "100%" }}>
+          <div className={classNames("relative w-full", { expanded: !!state.emailTypoSuggestion })}>
             <input
               id={`${uid}email`}
               type="email"
@@ -237,7 +240,11 @@ const EmailAddress = () => {
             />
 
             {state.emailTypoSuggestion ? (
-              <div className="dropdown grid gap-2">
+              <div
+                className={classNames(
+                  "absolute top-full left-0 z-30 mt-1 grid w-full gap-2 rounded border border-border bg-background p-4 shadow",
+                )}
+              >
                 <div>Did you mean {state.emailTypoSuggestion}?</div>
 
                 <div className="flex flex-wrap gap-2">
@@ -552,7 +559,7 @@ const CustomerDetails = ({ showCustomFields }: { showCustomFields: boolean }) =>
             <CountryInput />
           </div>
           {addressVerification && addressVerification.type !== "done" ? (
-            <div className="dropdown flex flex-col gap-4">
+            <Dropdown className="flex flex-col gap-4">
               {addressVerification.type === "verification-required" ? (
                 <>
                   <div>
@@ -586,7 +593,7 @@ const CustomerDetails = ({ showCustomFields }: { showCustomFields: boolean }) =>
                   <Button onClick={verifyAddress}>Yes, it is</Button>
                 </>
               )}
-            </div>
+            </Dropdown>
           ) : null}
         </div>
       ) : null}

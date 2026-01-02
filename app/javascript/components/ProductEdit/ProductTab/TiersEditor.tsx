@@ -28,6 +28,7 @@ import { showAlert } from "$app/components/server-components/Alert";
 import { Drawer, ReorderingHandle, SortableList } from "$app/components/SortableList";
 import { Toggle } from "$app/components/Toggle";
 import { Alert } from "$app/components/ui/Alert";
+import { Dropdown } from "$app/components/ui/Dropdown";
 import { Placeholder } from "$app/components/ui/Placeholder";
 import { Row, RowActions, RowContent, RowDetails, Rows } from "$app/components/ui/Rows";
 import { useDebouncedCallback } from "$app/components/useDebouncedCallback";
@@ -306,7 +307,7 @@ const TierEditor = ({
               className="toggle"
               open={tier.customizable_price}
             >
-              <div className="dropdown">
+              <Dropdown>
                 <div
                   style={{
                     display: "grid",
@@ -348,7 +349,7 @@ const TierEditor = ({
                     ),
                   )}
                 </div>
-              </div>
+              </Dropdown>
             </Details>
             <PriceChangeSettings tier={tier} updateTier={updateTier} />
             {integrations.length > 0 ? (
@@ -449,7 +450,7 @@ You can modify or cancel your membership at any time.`;
       className="toggle"
       open={tier.apply_price_changes_to_existing_memberships}
     >
-      <div className="dropdown">
+      <Dropdown>
         <div className="grid gap-6">
           {initialEffectiveDate ? (
             <Alert variant="warning">
@@ -517,7 +518,7 @@ You can modify or cancel your membership at any time.`;
             ) : null}
           </fieldset>
         </div>
-      </div>
+      </Dropdown>
     </Details>
   );
 };

@@ -5,6 +5,7 @@ import { CurrencyCode, formatPriceCentsWithoutCurrencySymbol } from "$app/utils/
 import { Details } from "$app/components/Details";
 import { PriceInput } from "$app/components/PriceInput";
 import { InstallmentPlanEditor } from "$app/components/ProductEdit/ProductTab/InstallmentPlanEditor";
+import { Dropdown } from "$app/components/ui/Dropdown";
 import { Toggle } from "$app/components/Toggle";
 
 export const PriceEditor = ({
@@ -65,8 +66,7 @@ export const PriceEditor = ({
           </Toggle>
         }
       >
-        <div
-          className="dropdown"
+        <Dropdown
           style={{
             display: "grid",
             gap: "var(--spacer-4)",
@@ -87,7 +87,7 @@ export const PriceEditor = ({
               onChange={setSuggestedPriceCents}
             />
           </fieldset>
-        </div>
+        </Dropdown>
       </Details>
       {eligibleForInstallmentPlans ? (
         <InstallmentPlanEditor

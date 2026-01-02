@@ -32,7 +32,8 @@ export const Popover = ({
   disabled,
 }: Props) => {
   const [open, setOpen] = React.useState(openProp ?? false);
-  const ref = React.useRef<HTMLElement | null>(null);
+  const ref = React.useRef<HTMLDetailsElement>(null);
+  const dropoverPosition = useDropdownPosition(ref);
 
   if (openProp !== undefined && open !== openProp) setOpen(openProp);
 
@@ -47,31 +48,43 @@ export const Popover = ({
       toggle(false);
     }
   });
-  const dropoverPosition = useDropdownPosition(ref);
   React.useEffect(() => {
     if (!open) return;
     const focusElement = ref.current?.querySelector("[autofocus]");
     if (focusElement instanceof HTMLElement) focusElement.focus();
   }, [open]);
 
-  const renderedTrigger = typeof trigger === "function" ? trigger(open) : trigger;
-
   return (
     <Details
-      className={classNames("popover toggle", position, triggerClassName)}
-      summary={renderedTrigger}
+      className={classNames("group relative inline-block", "popover toggle", triggerClassName)}
+      open={open}
+      onToggle={(nextOpen: boolean) => toggle(nextOpen)}
+      ref={ref}
+      style={style}
+      summary={typeof trigger === "function" ? trigger(open) : trigger}
       summaryProps={{
-        inert: disabled,
+        className: "list-none [&::-webkit-details-marker]:hidden",
+        inert: disabled || undefined,
         "aria-label": ariaLabel,
-        "aria-haspopup": true,
+        "aria-haspopup": "true",
         "aria-expanded": open,
       }}
-      open={open}
-      onToggle={toggle}
-      ref={(el) => (ref.current = el)}
-      style={style}
     >
-      <div className={classNames("dropdown", dropdownClassName)} style={dropoverPosition}>
+      <div
+        className={classNames(
+          "absolute top-full left-0 z-30 min-w-full rounded-md border border-border bg-background shadow-lg",
+          // Arrow
+          "before:absolute before:left-1/2 before:-translate-x-1/2 before:border-x-[10px] before:border-x-transparent",
+          position === "top"
+            ? "before:-bottom-[10px] before:border-t-[10px] before:border-t-background"
+            : "before:-top-[10px] before:border-b-[10px] before:border-b-background",
+          "before:content-['']",
+          // Top position
+          position === "top" && "top-auto bottom-[calc(100%+0.5rem)] shadow-none",
+          dropdownClassName,
+        )}
+        style={dropoverPosition}
+      >
         {children instanceof Function ? children(() => toggle(false)) : children}
       </div>
     </Details>
@@ -98,7 +111,7 @@ export const useDropdownPosition = (ref: React.RefObject<HTMLElement>) => {
     window.addEventListener("resize", calculateSpace);
 
     return () => window.removeEventListener("resize", calculateSpace);
-  });
+  }, []);
 
   return {
     translate: `min(${space}px - 100% - var(--spacer-4), 0px)`,
