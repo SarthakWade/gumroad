@@ -170,7 +170,7 @@ export const UpsellSelectModal = ({
           }
         >
           {discount && selectedProduct ? (
-            <Dropdown className="!max-w-sm">
+            <Dropdown className="max-w-sm">
               <DiscountInput
                 discount={discount}
                 setDiscount={(newDiscount: InputtedDiscount) => setDiscount(newDiscount)}
