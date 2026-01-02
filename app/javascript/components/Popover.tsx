@@ -73,14 +73,14 @@ export const Popover = ({
       <div
         className={classNames(
           "absolute top-full left-0 z-30 min-w-full rounded-md border border-border bg-background shadow-lg",
-          // Arrow
-          "before:absolute before:left-1/2 before:-translate-x-1/2 before:border-x-[10px] before:border-x-transparent",
+          // Arrow using CSS border trick (8px = spacer-2 matches original $tooltip-arrow-size)
+          "before:absolute before:left-1/2 before:-translate-x-1/2 before:border-x-8 before:border-x-transparent",
           position === "top"
-            ? "before:-bottom-[10px] before:border-t-[10px] before:border-t-background"
-            : "before:-top-[10px] before:border-b-[10px] before:border-b-background",
+            ? "before:-bottom-2 before:border-t-8 before:border-t-background"
+            : "before:-top-2 before:border-b-8 before:border-b-background",
           "before:content-['']",
-          // Top position
-          position === "top" && "top-auto bottom-[calc(100%+0.5rem)] shadow-none",
+          // Top position variant
+          position === "top" && "top-auto bottom-full mb-2 shadow-none",
           dropdownClassName,
         )}
         style={dropoverPosition}
