@@ -69,7 +69,7 @@ export const RichContentView = ({
 
   return (
     <LicenseProvider value={licenseInfo}>
-      <EditorContent className="rich-text grid h-full flex-1" editor={editor} />
+      <EditorContent className="prose grid h-full max-w-none flex-1" editor={editor} />
     </LicenseProvider>
   );
 };

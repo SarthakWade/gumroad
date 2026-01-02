@@ -1,6 +1,6 @@
 import { Node as TiptapNode } from "@tiptap/core";
 import { NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
-import cx from "classnames";
+import { classNames } from "$app/utils/classNames";
 import * as React from "react";
 
 import { assertDefined } from "$app/utils/assert";
@@ -47,7 +47,9 @@ const LicenseKeyNodeView = ({ editor, selected }: NodeViewProps) => {
 
   return (
     <NodeViewWrapper>
-      <Row className={cx("embed", { selected })}>
+      <Row
+        className={classNames("bg-filled rounded border border-border", selected && "relative outline outline-border")}
+      >
         {editor.isEditable ? <NodeActionsMenu editor={editor} /> : null}
         <RowContent className="content" contentEditable={false}>
           <Icon name="solid-key" className="type-icon" />

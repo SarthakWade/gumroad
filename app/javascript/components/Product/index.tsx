@@ -439,10 +439,10 @@ export const Product = ({
         <section className="border-t border-border p-6">
           {pageLoaded ? (
             <PublicFilesSettingsContext.Provider value={publicFilesSettings}>
-              <EditorContent className="rich-text" editor={descriptionEditor} />
+              <EditorContent className="prose max-w-none" editor={descriptionEditor} />
             </PublicFilesSettingsContext.Provider>
           ) : (
-            <div className="rich-text" dangerouslySetInnerHTML={{ __html: product.description_html ?? "" }} />
+            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: product.description_html ?? "" }} />
           )}
         </section>
       </section>

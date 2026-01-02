@@ -590,7 +590,7 @@ const EmailPreview = ({
       </Separator>
       <div className="grid gap-4 rounded-sm border border-border bg-background p-4">
         <h3>{email.name.trim() === "" ? "Untitled" : email.name}</h3>
-        <EditorContent className="rich-text" editor={editor} />
+        <EditorContent className="prose max-w-none" editor={editor} />
         {emailFiles.length > 0 ? <Button color="primary">View content</Button> : null}
         <hr />
         <div className="flex flex-col items-center gap-4">

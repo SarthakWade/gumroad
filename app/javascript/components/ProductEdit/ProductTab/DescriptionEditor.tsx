@@ -345,7 +345,7 @@ export const DescriptionEditor = ({
         <ImageUploadSettingsContext.Provider value={imageSettings}>
           <div className="rich-text-editor" data-gumroad-ignore>
             {editor ? <RichTextEditorToolbar editor={editor} productId={id} /> : null}
-            <EditorContent className="rich-text" editor={editor} />
+            <EditorContent className="prose max-w-none" editor={editor} />
           </div>
         </ImageUploadSettingsContext.Provider>
       </PublicFilesSettingsContext.Provider>

@@ -246,7 +246,7 @@ export const ExternalMediaFileEmbed = TiptapNode.create({
   addNodeView() {
     return ReactNodeViewRenderer(({ editor, node, deleteNode }: NodeViewProps) => (
       <NodeViewWrapper>
-        <Row className="embed">
+        <Row className="bg-filled rounded border border-border">
           <RowDetails className="preview" dangerouslySetInnerHTML={{ __html: sanitizeHtml(cast(node.attrs.html)) }} />
           <RowContent className="content">
             <Icon name="file-earmark-play-fill" className="type-icon" />

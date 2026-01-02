@@ -78,7 +78,7 @@ const PostPage = ({
       <article className="border-b border-border">
         <div className="mx-auto grid max-w-6xl gap-8 p-4 pt-8 text-lg lg:px-0 lg:pt-12 lg:pb-8">
           {pageLoaded ? null : <LoadingSpinner className="size-8" />}
-          <EditorContent className="rich-text" editor={editor} />
+          <EditorContent className="prose max-w-none" editor={editor} />
         </div>
 
         {call_to_action || download_url ? (

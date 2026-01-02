@@ -26,7 +26,7 @@ export const NodeActionsMenu = ({
     <Popover
       open={open}
       onToggle={setOpen}
-      className="actions-menu"
+      className="absolute bottom-4 left-0 z-50 text-sm lg:top-5 lg:bottom-auto lg:-left-2 lg:hidden lg:-translate-x-full"
       aria-label="Actions"
       trigger={
         <div className="button small filled" data-drag-handle draggable>
@@ -58,11 +58,7 @@ export const NodeActionsMenu = ({
                 {item()}
               </div>
             ))}
-            <div
-              style={{ color: "rgb(var(--danger))" }}
-              onClick={() => editor.commands.deleteSelection()}
-              role="menuitem"
-            >
+            <div className="text-danger" onClick={() => editor.commands.deleteSelection()} role="menuitem">
               <Icon name="trash2" />
               <span>Delete</span>
             </div>

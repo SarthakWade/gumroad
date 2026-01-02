@@ -57,7 +57,7 @@ const PostPage = ({
         </header>
         <div className="mx-auto mt-6 grid max-w-3xl justify-items-center gap-6 border-t py-12 text-xl">
           {pageLoaded ? null : <LoadingSpinner className="size-8" />}
-          <EditorContent className="rich-text" editor={editor} />
+          <EditorContent className="prose max-w-none" editor={editor} />
 
           {call_to_action ? (
             <div className="grid">

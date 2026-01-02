@@ -186,7 +186,7 @@ const PostsSectionView = ({ section }: { section: PostsSection }) => <PostsView 
 
 const RichTextSectionView = ({ section }: { section: RichTextSection }) => {
   const editor = useRichTextEditor({ initialValue: section.text, editable: false });
-  return <EditorContent editor={editor} className="rich-text -mb-4" />;
+  return <EditorContent editor={editor} className="prose -mb-4 max-w-none" />;
 };
 
 const SubscribeSectionView = ({

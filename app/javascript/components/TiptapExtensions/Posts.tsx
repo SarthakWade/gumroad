@@ -1,6 +1,6 @@
 import { Node as TiptapNode } from "@tiptap/core";
 import { NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
-import cx from "classnames";
+import { classNames } from "$app/utils/classNames";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import * as React from "react";
 
@@ -59,7 +59,9 @@ const PostsNodeView = ({ editor, selected }: NodeViewProps) => {
 
   return (
     <NodeViewWrapper>
-      <Row className={cx("embed", { selected })}>
+      <Row
+        className={classNames("bg-filled rounded border border-border", selected && "relative outline outline-border")}
+      >
         {editor.isEditable ? <NodeActionsMenu editor={editor} /> : null}
         <RowContent className="content" asChild>
           <button
@@ -78,7 +80,7 @@ const PostsNodeView = ({ editor, selected }: NodeViewProps) => {
                 <Icon name="outline-cheveron-right" />
               )
             ) : null}
-            <Icon name="file-earmark-medical-fill" className={cx("type-icon", { "text-muted": total === 0 })} />
+            <Icon name="file-earmark-medical-fill" className={classNames("type-icon", total === 0 && "text-muted")} />
             <div>
               {isLoading || total > 0 ? (
                 <>

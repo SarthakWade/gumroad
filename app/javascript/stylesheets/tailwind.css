@@ -116,3 +116,27 @@
     transform: translateX(-50%);
   }
 }
+
+@import "highlight.js/styles/github.min.css";
+
+.ProseMirror[contenteditable="true"] {
+  white-space: break-spaces;
+
+  &:focus-within {
+    outline: none;
+  }
+}
+
+.ProseMirror p.is-editor-empty:first-child::before,
+.ProseMirror .node-image.is-empty .figcaption::before {
+  content: attr(data-placeholder);
+  pointer-events: none;
+  float: left;
+  height: 0;
+  color: rgb(var(--color) / var(--gray-3));
+}
+
+.prose .react-renderer[draggable] {
+  cursor: unset;
+}
+

@@ -535,7 +535,7 @@ const RichTextSectionView = ({ section }: { section: RichTextSection }) => {
           />
         </div>
       ) : null}
-      <EditorContent editor={editor} className="rich-text" />
+      <EditorContent editor={editor} className="prose max-w-none" />
     </SectionLayout>
   );
 };

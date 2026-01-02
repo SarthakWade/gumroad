@@ -1,7 +1,7 @@
 import { Node as TiptapNode } from "@tiptap/core";
 import { NodeSelection } from "@tiptap/pm/state";
 import { NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
-import cx from "classnames";
+import { classNames } from "$app/utils/classNames";
 import * as React from "react";
 
 import FileUtils, { FILE_TYPE_EXTENSIONS_MAP } from "$app/utils/file";
@@ -33,7 +33,9 @@ const NodeView = ({ editor, node }: NodeViewProps) => {
 
   return (
     <NodeViewWrapper contentEditable={false}>
-      <Row className={cx("embed", { selected })}>
+      <Row
+        className={classNames("bg-filled rounded border border-border", selected && "relative outline outline-border")}
+      >
         {editor.isEditable ? <NodeActionsMenu editor={editor} /> : null}
         <RowContent className="content">
           <FileRowContent

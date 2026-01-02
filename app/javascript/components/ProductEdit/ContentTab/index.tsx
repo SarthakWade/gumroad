@@ -869,7 +869,7 @@ const ContentTabContent = ({ selectedVariantId }: { selectedVariantId: string | 
             )
           }
         >
-          <EditorContent className="rich-text grid h-full flex-1" editor={editor} data-gumroad-ignore />
+          <EditorContent className="prose grid h-full max-w-none flex-1" editor={editor} data-gumroad-ignore />
         </PageListLayout>
       </div>
       {confirmingDeletePage !== null ? (

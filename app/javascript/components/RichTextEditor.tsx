@@ -7,7 +7,7 @@ import { EditorState, Selection } from "@tiptap/pm/state";
 import { EditorView } from "@tiptap/pm/view";
 import { EditorContent, useEditor, Extensions } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import cx from "classnames";
+import { classNames } from "$app/utils/classNames";
 import partition from "lodash/partition";
 import * as React from "react";
 
@@ -89,7 +89,7 @@ export const MenuItem = ({
   <MenuItemTooltip tip={name}>
     <button
       type="button"
-      className="toolbar-item"
+      className="rounded px-2 py-1 hover:bg-active-bg aria-pressed:text-accent"
       aria-pressed={active}
       disabled={disabled}
       aria-label={name}
@@ -110,7 +110,7 @@ export const PopoverMenuItem = ({
     aria-label={name}
     trigger={
       <MenuItemTooltip tip={name}>
-        <div className={cx("toolbar-item", active)}>
+        <div className={classNames("rounded px-2 py-1 hover:bg-active-bg", active && "text-accent")}>
           <Icon name={icon} />
         </div>
       </MenuItemTooltip>
@@ -383,13 +383,18 @@ export const RichTextEditorToolbar = ({
     <ToolbarTooltipContext.Provider value={showTooltipState}>
       <div
         role="toolbar"
-        className={cx("rich-text-editor-toolbar", color, className)}
+        className={classNames(
+          "sticky top-0 z-[1] flex flex-wrap gap-1 py-1",
+          color === "primary" && "bg-primary text-primary-foreground",
+          color === "ghost" && "bg-background",
+          className,
+        )}
         onMouseLeave={() => setShowTooltip(false)}
       >
         <Popover
           aria-label="Text formats"
           trigger={
-            <div className="toolbar-item">
+            <div className="rounded px-2 py-1 hover:bg-active-bg">
               {activeFormatOption?.name ?? "Text"} <Icon name="outline-cheveron-down" />
             </div>
           }
@@ -470,7 +475,7 @@ export const RichTextEditorToolbar = ({
                 <Separator aria-orientation="vertical" />
                 <Popover
                   trigger={
-                    <div className="toolbar-item">
+                    <div className="rounded px-2 py-1 hover:bg-active-bg">
                       Insert <Icon name="outline-cheveron-down" />
                     </div>
                   }
@@ -571,9 +576,9 @@ export const RichTextEditor = ({
   });
 
   return (
-    <div className="rich-text-editor" data-gumroad-ignore>
-      {editor ? <RichTextEditorToolbar editor={editor} /> : null}
-      <EditorContent className="rich-text" editor={editor} />
+    <div className="grid min-h-56 grid-rows-[max-content_1fr] rounded" data-gumroad-ignore>
+      {editor ? <RichTextEditorToolbar editor={editor} className="rounded-t border border-b-0" /> : null}
+      <EditorContent className="prose max-w-none" editor={editor} />
     </div>
   );
 };
