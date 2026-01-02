@@ -88,7 +88,7 @@ export const Popover = ({
           // Hide the dropdown's own arrow (it's on the parent now)
           "before:hidden",
           // Top position variant
-          position === "top" && "top-auto bottom-full mb-2 shadow-none",
+          position === "top" ? "top-auto bottom-full mb-2 shadow-none" : "mt-2",
           dropdownClassName,
         )}
         style={dropoverPosition}
