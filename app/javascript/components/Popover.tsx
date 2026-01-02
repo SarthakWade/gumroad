@@ -56,7 +56,19 @@ export const Popover = ({
 
   return (
     <Details
-      className={classNames("group relative inline-block", "popover toggle", triggerClassName)}
+      className={classNames(
+        "group relative inline-block",
+        "popover toggle",
+        // Arrow on popover container (visible only when open via CSS in .popover[open])
+        // Arrow positioned between trigger and dropdown using ::after
+        open &&
+          "after:absolute after:left-1/2 after:z-30 after:-translate-x-1/2 after:border-x-8 after:border-x-transparent after:content-['']",
+        open &&
+          (position === "top"
+            ? "after:bottom-full after:border-t-8 after:border-t-border"
+            : "after:top-full after:border-b-8 after:border-b-border"),
+        triggerClassName,
+      )}
       open={open}
       onToggle={(nextOpen: boolean) => toggle(nextOpen)}
       ref={ref}
@@ -73,12 +85,8 @@ export const Popover = ({
       <div
         className={classNames(
           "absolute top-full left-0 z-30 min-w-full rounded-md border border-border bg-background shadow-lg",
-          // Arrow using CSS border trick (8px = spacer-2 matches original $tooltip-arrow-size)
-          "before:absolute before:left-1/2 before:-translate-x-1/2 before:border-x-8 before:border-x-transparent",
-          position === "top"
-            ? "before:-bottom-2 before:border-t-8 before:border-t-background"
-            : "before:-top-2 before:border-b-8 before:border-b-background",
-          "before:content-['']",
+          // Hide the dropdown's own arrow (it's on the parent now)
+          "before:hidden",
           // Top position variant
           position === "top" && "top-auto bottom-full mb-2 shadow-none",
           dropdownClassName,
