@@ -59,8 +59,6 @@ export const Popover = ({
       className={classNames(
         "group relative inline-block",
         "popover toggle",
-        // Arrow on popover container (visible only when open via CSS in .popover[open])
-        // Arrow positioned between trigger and dropdown using ::after
         open &&
           "after:absolute after:left-1/2 after:z-30 after:-translate-x-1/2 after:border-x-8 after:border-x-transparent after:content-['']",
         open &&
@@ -84,11 +82,12 @@ export const Popover = ({
     >
       <div
         className={classNames(
-          "absolute top-full left-0 z-30 min-w-full rounded-md border border-border bg-background shadow-lg",
-          // Hide the dropdown's own arrow (it's on the parent now)
+          "absolute left-0 z-30 w-max min-w-full",
+          "rounded border border-border bg-background p-4 text-foreground",
           "before:hidden",
-          // Top position variant
-          position === "top" ? "top-auto bottom-full mb-2 shadow-none" : "mt-2",
+          position === "top"
+            ? "top-auto bottom-[calc(100%+0.4375rem)] shadow-none"
+            : "top-[calc(100%+0.4375rem)] shadow",
           dropdownClassName,
         )}
         style={dropoverPosition}
