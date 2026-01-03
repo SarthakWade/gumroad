@@ -85,6 +85,8 @@ export const Popover = ({
           "absolute left-0 z-30 w-max min-w-full",
           "rounded border border-border bg-background p-4 text-foreground",
           "before:hidden",
+          "[&:has(>[role=menu]:only-child)]:border-none [&:has(>[role=menu]:only-child)]:bg-transparent [&:has(>[role=menu]:only-child)]:p-0 [&:has(>[role=menu]:only-child)]:shadow-none",
+          "[&>[role=menu]:only-child]:shadow",
           position === "top"
             ? "top-auto bottom-[calc(100%+0.4375rem)] shadow-none"
             : "top-[calc(100%+0.4375rem)] shadow",
@@ -92,9 +94,7 @@ export const Popover = ({
         )}
         style={dropoverPosition}
       >
-        <div className="order-0 contents [&>[role=menu]]:rounded [&>[role=menu]]:border [&>[role=menu]]:border-white/35 [&>[role=menu]]:bg-black [&>[role=menu]]:text-white [&>[role=menu]]:shadow-none [&>[role=menu]>[role^=menuitem]]:flex [&>[role=menu]>[role^=menuitem]]:items-center">
-          {children instanceof Function ? children(() => toggle(false)) : children}
-        </div>
+        {children instanceof Function ? children(() => toggle(false)) : children}
       </div>
     </Details>
   );

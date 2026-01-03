@@ -21,8 +21,8 @@ export const DashboardNavProfilePopover = ({ children, user }: { children: React
         <Icon name={open ? "outline-cheveron-up" : "outline-cheveron-down"} />
       </div>
     )}
-    className="border-t border-t-white/35 after:!border-t-white dark:border-t-white/35 dark:after:!border-t-white"
-    dropdownClassName="mx-4 !border-0 !bg-transparent !p-0 !shadow-none text-white"
+    className="border-t border-t-white/35 after:!border-t-white/35 dark:border-t-white/35 dark:after:!border-t-white/35"
+    dropdownClassName="mx-4 !border-0 !bg-transparent !p-0 !shadow-none text-white [&>[role=menu]]:!shadow-none"
   >
     {children}
   </Popover>
