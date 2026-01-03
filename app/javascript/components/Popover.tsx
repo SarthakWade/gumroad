@@ -92,7 +92,9 @@ export const Popover = ({
         )}
         style={dropoverPosition}
       >
-        {children instanceof Function ? children(() => toggle(false)) : children}
+        <div className="order-0 contents [&>[role=menu]]:rounded [&>[role=menu]]:border [&>[role=menu]]:border-white/35 [&>[role=menu]]:bg-black [&>[role=menu]]:text-white [&>[role=menu]]:shadow-none [&>[role=menu]>[role^=menuitem]]:flex [&>[role=menu]>[role^=menuitem]]:items-center">
+          {children instanceof Function ? children(() => toggle(false)) : children}
+        </div>
       </div>
     </Details>
   );
@@ -118,7 +120,7 @@ export const useDropdownPosition = (ref: React.RefObject<HTMLElement>) => {
     window.addEventListener("resize", calculateSpace);
 
     return () => window.removeEventListener("resize", calculateSpace);
-  }, []);
+  });
 
   return {
     translate: `min(${space}px - 100% - var(--spacer-4), 0px)`,
